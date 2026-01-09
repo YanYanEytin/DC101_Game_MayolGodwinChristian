@@ -517,14 +517,14 @@ function useTopAbility(){
 
 // Keyboard input handler (shooting, abilities, pause/start)
 document.addEventListener('keydown', (ev) => {
+
   // ENTER: start / pause / resume
   if (ev.key === 'Enter') {
-    if (!running) { 
-      startGame(); 
-      return; 
+    if (!running) {
+      startGame();
+      return;
     }
 
-    // toggle pause/resume
     paused = !paused;
 
     if (paused) {
@@ -538,25 +538,24 @@ document.addEventListener('keydown', (ev) => {
     }
     return;
   }
-});
 
   // use ability with Space
-  if(ev.code === 'Space' || ev.key === ' '){
+  if (ev.code === 'Space' || ev.key === ' ') {
     ev.preventDefault();
-    if(paused) return;
+    if (paused) return;
     useTopAbility();
     return;
   }
 
   // only letters for shooting
-  if(!/^[a-zA-Z]$/.test(ev.key)) return;
-  if(!running) return;
-  if(paused) return;
+  if (!/^[a-zA-Z]$/.test(ev.key)) return;
+  if (!running || paused) return;
 
   const ch = ev.key.toLowerCase();
   const front = enemies.find(e => !e.dead && e.word.length > 0);
-  if(!front) return;
-  if(front.word[0].toLowerCase() === ch){
+  if (!front) return;
+
+  if (front.word[0].toLowerCase() === ch) {
     bullets.push(new Bullet(ch, front));
   }
 });

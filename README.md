@@ -1,7 +1,7 @@
+# WordBlaster 🎮
+
 ## Live Demo
 https://yanyaneytin.github.io/DC101_Game_MayolGodwinChristian/
-
-# WordBlaster 🎮
 
 ## Description
 WordBlaster is a browser-based typing shooter game inspired by arcade-style
@@ -33,5 +33,6 @@ time, challenging speed and accuracy.
 This project is an original work created for DC 101 – Web Development.
 Gameplay inspiration is based on classic typing arcade games (e.g., ZType), 
 emphasizing speed, accuracy, and real-time player interaction.
+
 
 

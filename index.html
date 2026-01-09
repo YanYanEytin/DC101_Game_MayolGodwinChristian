@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ZType — FIFO, Freeze, Piercing, Staggered Spawn</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main id="wrap">
+  <section id="left">
+    <canvas id="c"></canvas>
+
+    <div id="hint">
+      Press <strong>Enter</strong> to start — FIFO targeting: type the front enemy's letter to shoot it
+    </div>
+
+    <div id="score">Score: <span id="scoreVal">0</span></div>
+    <div id="health">Health: <span id="healthVal">5</span></div>
+    <div id="start">PRESS ENTER TO START</div>
+
+    <div id="minimalFlash" aria-hidden="true"></div>
+  </section>
+
+  <aside id="right">
+    <div id="abilityFullWarning">ABILITY STACKED FULL!</div>
+
+    <div id="abilityStack">
+      <div id="abilityTitle">Abilities (stack)</div>
+      <div id="stackList"></div>
+    </div>
+
+    <div id="rightHelp">
+      Click top ability or press <strong>Space</strong> to use.<br>
+      Only some enemies drop an ability.
+    </div>
+  </aside>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

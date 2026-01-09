@@ -23,10 +23,14 @@ time, challenging speed and accuracy.
 - Press **Space** to activate the top ability
 - Avoid enemies reaching the bottom of the screen
 
+## Live Demo
+https://yanyaneytin.github.io/DC101_Game_MayolGodwinChristian/
+
 ## Screenshot / Live Demo
 ![Game Screenshot](screenshot.jpg)
 
 ## References
 This project is an original work created for DC 101 – Web Development.
 Gameplay inspiration is based on classic typing arcade games.
+
 

@@ -15,7 +15,6 @@ const startLabel = document.getElementById('start');
 const stackList = document.getElementById('stackList');
 const abilityFullWarning = document.getElementById('abilityFullWarning');
 const minimalFlash = document.getElementById('minimalFlash');
-const mobileInput = document.getElementById('mobileInput');
 
 const DPR = Math.max(1, window.devicePixelRatio || 1);
 const wrap = document.getElementById('left');
@@ -35,10 +34,6 @@ const WIDTH = ()=> wrap.clientWidth;
 const HEIGHT = ()=> wrap.clientHeight;
 const now = ()=> performance.now();
 const rand = (a,b)=> Math.random()*(b-a)+a;
-
-function isMobileDevice(){
-  return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
 
 // wordlist
 const WORDS = [
@@ -556,29 +551,6 @@ document.addEventListener('keydown', (ev) => {
   }
 });
 
-// MOBILE INPUT: handle on-screen keyboard typing
-mobileInput.addEventListener('input', () => {
-  if(!running || paused){
-    mobileInput.value = '';
-    return;
-  }
-
-  const text = mobileInput.value.toLowerCase();
-  mobileInput.value = '';
-
-  for(const ch of text){
-    if(!/^[a-z]$/.test(ch)) continue;
-
-    const front = enemies.find(e => !e.dead && e.word.length > 0);
-    if(!front) return;
-
-    if(front.word[0].toLowerCase() === ch){
-      bullets.push(new Bullet(ch, front));
-    }
-  }
-});
-
-
 // start game
 function startGame(){
   running = true;
@@ -609,17 +581,6 @@ function startGame(){
 
   spawnEnemyImmediate();
   requestAnimationFrame(gameTick);
-
-  // OPEN MOBILE KEYBOARD
-  if(isMobileDevice()){
-    try {
-      mobileInput.value = '';
-      mobileInput.focus({ preventScroll: true });
-      setTimeout(resizeCanvas, 250);
-    } catch(e){
-      mobileInput.focus();
-    }
-  }
 }
 
 // end game
@@ -628,23 +589,10 @@ function endGame(){
   paused = false;
   startLabel.textContent = 'GAME OVER — PRESS ENTER TO RESTART';
   startLabel.style.display = 'block';
-  try { mobileInput.blur(); } catch(e){}
 }
 
 // optional: click start label to start
 startLabel.addEventListener('click', ()=> { if(!running) startGame(); });
-
-// REFRESH MOBILE KEYBOARD ON TAP
-document.getElementById('left').addEventListener('touchstart', () => {
-  if(isMobileDevice()){
-    try {
-      mobileInput.focus({ preventScroll: true });
-    } catch(e){
-      mobileInput.focus();
-    }
-  }
-});
-
 
 // initial UI
 renderStack();

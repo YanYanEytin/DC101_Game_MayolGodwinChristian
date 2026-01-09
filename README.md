@@ -5,7 +5,7 @@ https://yanyaneytin.github.io/DC101_Game_MayolGodwinChristian/
 
 ## Description
 WordBlaster is a browser-based typing shooter game inspired by arcade-style
-gameplay. Players eliminate enemies by typing the correct letters while
+gameplay such as ZType. Players eliminate enemies by typing the correct letters while
 managing a stack-based ability system. The game increases in difficulty over
 time, challenging speed and accuracy.
 
@@ -42,6 +42,7 @@ Gameplay inspiration is based on classic typing arcade games such as ZType:
 https://zty.pe/
 
 No third-party code or assets were copied.
+
 
 
 

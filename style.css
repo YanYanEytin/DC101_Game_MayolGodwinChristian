@@ -2,6 +2,23 @@
 html,body{height:100%;margin:0;background:#000;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,Arial}
 #wrap{width:860px;height:880px;background:linear-gradient(180deg,#021018,#031627);position:relative;overflow:hidden;border:1px solid rgba(45,212,191,0.04)}
 canvas{display:block; width:640px; height:100%; float:left;}
+/* tiny invisible input used to open mobile keyboard (keeps focusable) */
+#mobileInput {
+  position: absolute;
+  left: 6px;        /* inside left area so keyboard relates to game area */
+  bottom: 6px;      /* near bottom to reduce covering core HUD */
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  z-index: 9999;
+  caret-color: transparent;
+  pointer-events: auto; /* so programmatic focus works reliably on some browsers */
+}
+
 #left { width:640px; height:100%; float:left; position:relative; }
 #right { width:220px; height:100%; float:right; position:relative; padding:12px; box-sizing:border-box; }
 #hint{position:absolute;left:12px;right:12px;top:10px;text-align:center;color:var(--muted);font-size:13px;}

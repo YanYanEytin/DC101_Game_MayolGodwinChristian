@@ -37,8 +37,13 @@ time, challenging speed and accuracy.
 
 ## References
 This project is an original work created for DC 101 – Web Development.
-Gameplay inspiration is based on classic typing arcade games such as ZType.
+
+Gameplay inspiration is based on classic typing arcade games such as ZType:
+https://zty.pe/
+
 No third-party code or assets were copied.
+
+
 
 
 

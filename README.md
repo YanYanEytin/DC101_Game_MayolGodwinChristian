@@ -1,31 +1,31 @@
-# ZType Mini Arcade Game 🎮
+# WordBlaster 🎮
 
-## Course
-DC 101 – Web Development (2nd Year)
-
-## Project Description
-ZType is a browser-based typing shooter game inspired by arcade mechanics.
-Players eliminate enemies by typing letters correctly while managing abilities
-using a stack-based system.
-
-## Features
-- Canvas-based arcade gameplay
-- FIFO enemy targeting
-- Ability stack system (LIFO)
-- Dynamic difficulty progression
-- Keyboard-controlled interaction
+## Description
+WordBlaster is a browser-based typing shooter game inspired by arcade-style
+gameplay. Players eliminate enemies by typing the correct letters while
+managing a stack-based ability system. The game increases in difficulty over
+time, challenging speed and accuracy.
 
 ## Technologies Used
-- HTML5
+- HTML5 (Canvas)
 - CSS3
 - JavaScript
 - Git & GitHub
 
+## How to Run the Game
+1. Clone or download the repository
+2. Open `index.html` in any modern web browser
+3. Press **Enter** to start the game
+
 ## How to Play
-- Press **Enter** to start or pause the game
+- Press **Enter** to start, pause, or resume
 - Type the first letter of the front enemy to shoot
 - Press **Space** to activate the top ability
-- Survive as long as possible and earn points
+- Avoid enemies reaching the bottom of the screen
 
-## Live Demo
-(Optional – GitHub Pages link)
+## Screenshot / Live Demo
+![WordBlaster Screenshot](screenshot.png)
+
+## References
+This project is an original work created for DC 101 – Web Development.
+Gameplay inspiration is based on classic typing arcade games.

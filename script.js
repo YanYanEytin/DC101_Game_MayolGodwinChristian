@@ -518,18 +518,27 @@ function useTopAbility(){
 // Keyboard input handler (shooting, abilities, pause/start)
 document.addEventListener('keydown', (ev) => {
   // ENTER: start / pause / resume
-  if(ev.key === 'Enter'){
-    if(!running){ startGame(); return; }
+  if (ev.key === 'Enter') {
+    if (!running) { 
+      startGame(); 
+      return; 
+    }
+
     // toggle pause/resume
     paused = !paused;
-    if(paused){
+
+    if (paused) {
       startLabel.textContent = 'PAUSED — PRESS ENTER TO RESUME';
       startLabel.style.display = 'block';
     } else {
       startLabel.style.display = 'none';
+
+      // ⭐ OPTIONAL: reopen mobile keyboard on resume
+      mobileInput.focus();
     }
     return;
   }
+});
 
   // use ability with Space
   if(ev.code === 'Space' || ev.key === ' '){

@@ -10,15 +10,21 @@ managing a stack-based ability system. The game increases in difficulty over
 time, challenging speed and accuracy.
 
 ## Technologies Used
-- HTML5 (Canvas)
-- CSS3
+- HTML
+- CSS
 - JavaScript
 - Git & GitHub
 
 ## How to Run the Game
-1. Clone or download the repository
-2. Open `index.html` in any modern web browser
-3. Press **Enter** to start the game
+### Option 1: Play Online (Recommended)
+1. Open the Live Demo link above in any modern web browser
+2. Press **Enter** to start the game
+
+### Option 2: Run Locally
+1. Clone or download the repository from GitHub
+2. Open the project folder
+3. Double-click `index.html` to open it in a modern web browser
+4. Press **Enter** to start the game
 
 ## How to Play
 - Press **Enter** to start, pause, or resume
@@ -31,8 +37,10 @@ time, challenging speed and accuracy.
 
 ## References
 This project is an original work created for DC 101 – Web Development.
-Gameplay inspiration is based on classic typing arcade games (e.g., ZType), 
-emphasizing speed, accuracy, and real-time player interaction.
+Gameplay inspiration is based on classic typing arcade games such as ZType.
+No third-party code or assets were copied.
+
+
 
 
 

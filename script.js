@@ -1,5 +1,5 @@
 /* =========================
-   Word Blaster-style game with:
+   ZType-style game with:
    - FIFO targeting
    - Staggered spawn
    - Abilities LIFO (stack limit 10)
@@ -9,7 +9,6 @@
 
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
-const mobileInput = document.getElementById('mobileInput');
 const scoreEl = document.getElementById('scoreVal');
 const healthEl = document.getElementById('healthVal');
 const startLabel = document.getElementById('start');
@@ -517,60 +516,37 @@ function useTopAbility(){
 
 // Keyboard input handler (shooting, abilities, pause/start)
 document.addEventListener('keydown', (ev) => {
-
   // ENTER: start / pause / resume
-  if (ev.key === 'Enter') {
-    if (!running) {
-      startGame();
-      return;
-    }
-
+  if(ev.key === 'Enter'){
+    if(!running){ startGame(); return; }
+    // toggle pause/resume
     paused = !paused;
-
-    if (paused) {
+    if(paused){
       startLabel.textContent = 'PAUSED — PRESS ENTER TO RESUME';
       startLabel.style.display = 'block';
     } else {
       startLabel.style.display = 'none';
-
-      // ⭐ OPTIONAL: reopen mobile keyboard on resume
-      mobileInput.focus();
     }
     return;
   }
 
   // use ability with Space
-  if (ev.code === 'Space' || ev.key === ' ') {
+  if(ev.code === 'Space' || ev.key === ' '){
     ev.preventDefault();
-    if (paused) return;
+    if(paused) return;
     useTopAbility();
     return;
   }
 
   // only letters for shooting
-  if (!/^[a-zA-Z]$/.test(ev.key)) return;
-  if (!running || paused) return;
+  if(!/^[a-zA-Z]$/.test(ev.key)) return;
+  if(!running) return;
+  if(paused) return;
 
   const ch = ev.key.toLowerCase();
   const front = enemies.find(e => !e.dead && e.word.length > 0);
-  if (!front) return;
-
-  if (front.word[0].toLowerCase() === ch) {
-    bullets.push(new Bullet(ch, front));
-  }
-});
-
-mobileInput.addEventListener('input', () => {
-  const val = mobileInput.value.toLowerCase();
-  if (!val) return;
-
-  const ch = val[val.length - 1];
-  mobileInput.value = '';
-
-  if (!running || paused) return;
-
-  const front = enemies.find(e => !e.dead && e.word.length > 0);
-  if (front && front.word[0].toLowerCase() === ch) {
+  if(!front) return;
+  if(front.word[0].toLowerCase() === ch){
     bullets.push(new Bullet(ch, front));
   }
 });
@@ -579,21 +555,16 @@ mobileInput.addEventListener('input', () => {
 function startGame(){
   running = true;
   paused = false;
-
-  mobileInput.focus(); // opens mobile keyboard after tap
-
   lastTime = now();
   spawnTimer = 0;
   spawnInterval = SPAWN_MS;
   difficultyTimer = 0;
-
   enemies = [];
   bullets = [];
   particles = [];
   score = 0;
   abilityStack = [];
   health = 5;
-
   active.timeSlowUntil = 0;
   active.homingUntil = 0;
   active.rapidFireUntil = 0;
@@ -612,7 +583,6 @@ function startGame(){
   requestAnimationFrame(gameTick);
 }
 
-
 // end game
 function endGame(){
   running = false;
@@ -622,12 +592,7 @@ function endGame(){
 }
 
 // optional: click start label to start
-startLabel.addEventListener('click', () => {
-  if(!running){
-    startGame();
-    mobileInput.focus();
-  }
-});
+startLabel.addEventListener('click', ()=> { if(!running) startGame(); });
 
 // initial UI
 renderStack();
@@ -637,4 +602,3 @@ healthEl.textContent = health;
 // begin animation loop (idle)
 lastTime = now();
 requestAnimationFrame(gameTick);
-

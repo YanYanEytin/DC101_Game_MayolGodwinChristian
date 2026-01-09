@@ -24,8 +24,9 @@ time, challenging speed and accuracy.
 - Avoid enemies reaching the bottom of the screen
 
 ## Screenshot / Live Demo
-![WordBlaster Screenshot](screenshot.png)
+![Game Screenshot](screenshot.jpg)
 
 ## References
 This project is an original work created for DC 101 – Web Development.
 Gameplay inspiration is based on classic typing arcade games.
+

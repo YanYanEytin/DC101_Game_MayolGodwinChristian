@@ -1,5 +1,5 @@
 /* =========================
-   ZType-style game with:
+   Word Blaster-style game with:
    - FIFO targeting
    - Staggered spawn
    - Abilities LIFO (stack limit 10)
@@ -9,6 +9,7 @@
 
 const canvas = document.getElementById('c');
 const ctx = canvas.getContext('2d');
+const mobileInput = document.getElementById('mobileInput');
 const scoreEl = document.getElementById('scoreVal');
 const healthEl = document.getElementById('healthVal');
 const startLabel = document.getElementById('start');
@@ -551,20 +552,40 @@ document.addEventListener('keydown', (ev) => {
   }
 });
 
+mobileInput.addEventListener('input', () => {
+  const val = mobileInput.value.toLowerCase();
+  if (!val) return;
+
+  const ch = val[val.length - 1];
+  mobileInput.value = '';
+
+  if (!running || paused) return;
+
+  const front = enemies.find(e => !e.dead && e.word.length > 0);
+  if (front && front.word[0].toLowerCase() === ch) {
+    bullets.push(new Bullet(ch, front));
+  }
+});
+
 // start game
 function startGame(){
   running = true;
   paused = false;
+
+  mobileInput.focus(); // opens mobile keyboard after tap
+
   lastTime = now();
   spawnTimer = 0;
   spawnInterval = SPAWN_MS;
   difficultyTimer = 0;
+
   enemies = [];
   bullets = [];
   particles = [];
   score = 0;
   abilityStack = [];
   health = 5;
+
   active.timeSlowUntil = 0;
   active.homingUntil = 0;
   active.rapidFireUntil = 0;
@@ -583,6 +604,7 @@ function startGame(){
   requestAnimationFrame(gameTick);
 }
 
+
 // end game
 function endGame(){
   running = false;
@@ -592,7 +614,12 @@ function endGame(){
 }
 
 // optional: click start label to start
-startLabel.addEventListener('click', ()=> { if(!running) startGame(); });
+startLabel.addEventListener('click', () => {
+  if(!running){
+    startGame();
+    mobileInput.focus();
+  }
+});
 
 // initial UI
 renderStack();
@@ -602,3 +629,4 @@ healthEl.textContent = health;
 // begin animation loop (idle)
 lastTime = now();
 requestAnimationFrame(gameTick);
+
